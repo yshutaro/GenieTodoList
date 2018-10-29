@@ -1,4 +1,5 @@
 module TasksController
+using Genie.Renderer
 
 struct Task
   id::Int
@@ -13,11 +14,7 @@ const SampleTasks = Task[
 ]
 
 function index()
-  response = "
-    <ul>
-      $( mapreduce(b -> "<li>$(b.id) $(b.content)", *, SampleTasks) )
-    </ul>
-  "
+  html!(:tasks, :tasks, tasks = SampleTasks)
 end
 
 end

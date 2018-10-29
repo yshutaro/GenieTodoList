@@ -1,4 +1,6 @@
 module BooksController
+using Genie.Renderer
+
 struct Book
   title::String
   author::String
@@ -13,12 +15,9 @@ const BillGatesBooks = Book[
 ]
 
 function billgatesbooks()
-  response = "
-    <h1>Bill's Gates list of recommended books</h1>
-    <ul>
-      $( mapreduce(b -> "<li>$(b.title) by $(b.author)", *, BillGatesBooks) )
-    </ul>
-  "
+
+  html!(:books, :billgatesbooks, books = BillGatesBooks)
+
 end
 
 end

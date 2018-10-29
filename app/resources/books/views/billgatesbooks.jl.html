@@ -1,0 +1,9 @@
+<!-- billgatesbooks.jl.html -->
+<h1>Bill's Gates list of recommended books</h1>
+<ul>
+   <%
+      @foreach(@vars(:books)) do book
+         "<li>$(book.title) by $(book.author)"
+      end
+   %>
+</ul>

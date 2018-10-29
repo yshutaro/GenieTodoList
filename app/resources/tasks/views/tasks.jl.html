@@ -1,0 +1,8 @@
+<h1>Tasks</h1>
+<ul>
+   <%
+      @foreach(@vars(:tasks)) do task
+         "<li>$(task.id) $(task.content)"
+      end
+   %>
+</ul>
