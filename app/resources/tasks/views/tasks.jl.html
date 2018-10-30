@@ -1,8 +1,20 @@
-<h1>Tasks</h1>
-<ul>
-   <%
-      @foreach(@vars(:tasks)) do task
-         "<li>$(task.id) $(task.content)"
-      end
-   %>
-</ul>
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <meta charset="UTF-8"/>
+      <title>タスク一覧</title>
+  </head>
+  <body>
+    <ul>
+    <%
+        @foreach(@vars(:tasks)) do task
+          if task.done
+          "<li><s>$(task.content)</s></li>"
+          else
+          "<li>$(task.content)</li>"
+          end
+        end
+     %>
+    </ul>
+  </body>
+</html>

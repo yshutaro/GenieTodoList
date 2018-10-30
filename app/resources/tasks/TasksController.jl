@@ -8,9 +8,9 @@ struct Task
 end
 
 const SampleTasks = Task[
-  Task(1,"タスク1",false),
-  Task(2,"タスク2",true),
-  Task(3,"タスク3",false),
+  Task(1,"歯医者に行く",false),
+  Task(2,"はがきを出す",true),
+  Task(3,"定期券を買う",false),
 ]
 
 function index()
