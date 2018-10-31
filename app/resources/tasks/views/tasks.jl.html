@@ -7,6 +7,9 @@
   <body>
     <ul>
     <%
+      if size(@vars(:tasks)) == 0
+        "タスクがありません。"
+      else
         @foreach(@vars(:tasks)) do task
           if task.done
           "<li><s>$(task.content)</s></li>"
@@ -14,6 +17,7 @@
           "<li>$(task.content)</li>"
           end
         end
+      end
      %>
     </ul>
   </body>
