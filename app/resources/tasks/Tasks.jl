@@ -61,11 +61,22 @@ mutable struct Task <: AbstractModel
     # scopes = Dict{Symbol,Vector{SearchLight.SQLWhereEntity}}()
 
   ) = new("tasks", "id", Symbol[],                                                ### INTERNALS
-          id, content, done                                                       ### FIELDS 追加
+          id, content, done                                                       ### FIELDS #追加
           # validator,                                                                  ### VALIDATION
           # before_save, after_save, on_save, on_find, after_find                       ### CALLBACKS
           # scopes                                                                      ### SCOPES
           )
+end
+
+function seed()
+  SampleTasks = [
+    ("塩を買う", true),
+    ("簡易書留を出す", false),
+    ("本を5冊読む", false)
+  ]
+  for task in SampleTasks
+    Task(content = task[1], done = task[2]) |> SearchLight.save!
+  end
 end
 
 end
