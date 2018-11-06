@@ -6,22 +6,7 @@ route("/") do
   serve_static_file("/welcome.html")
 end
 
-route("/hello") do
-  "Hello World"
-end
+route("/tasks", TasksController.index, named = :get_tasks)
 
-## Sample
-route("/echo/:message") do
-  @params(:message)
-end
-
-route("/sum/:x::Int/:y::Int") do
-  @params(:x) + @params(:y)
-end
-
-route("/bgbooks", BooksController.billgatesbooks)
-
-## Sample end
-
-route("/tasks", TasksController.index)
-
+route("/tasks/new", TasksController.new, named = :new_task)
+route("/tasks/create", TasksController.create, method = GET, named = :create_task)

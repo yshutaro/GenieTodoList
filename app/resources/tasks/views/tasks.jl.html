@@ -1,24 +1,16 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-      <meta charset="UTF-8"/>
-      <title>タスク一覧</title>
-  </head>
-  <body>
-    <ul>
-    <%
-      if size(@vars(:tasks)) == 0
-        "タスクがありません。"
+<a href="$(Genie.Router.link_to(:new_task))">作成</a>
+<ul>
+<%
+  if length(@vars(:tasks)) == 0
+    "タスクがありません。"
+  else
+    @foreach(@vars(:tasks)) do task
+      if task.done
+      "<li><s>$(task.content)</s></li>"
       else
-        @foreach(@vars(:tasks)) do task
-          if task.done
-          "<li><s>$(task.content)</s></li>"
-          else
-          "<li>$(task.content)</li>"
-          end
-        end
+      "<li>$(task.content)</li>"
       end
-     %>
-    </ul>
-  </body>
-</html>
+    end
+  end
+ %>
+</ul>
