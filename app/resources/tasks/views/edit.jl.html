@@ -1,0 +1,9 @@
+<form action="$(Genie.Router.link_to(:update_task))">
+<%
+  @vars(:task)
+%>
+  <input type="hidden" name="task_id" value="" />
+  内容:<input type="text" name="task_content" value="" /></br>
+  完了:<input type="checkbox" name="task_done" value="" /></br>
+  <input type="submit" value="更新" />
+</form>

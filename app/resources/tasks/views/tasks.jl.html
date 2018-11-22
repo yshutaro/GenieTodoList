@@ -6,9 +6,9 @@
   else
     @foreach(@vars(:tasks)) do task
       if task.done
-      "<li><s>$(task.content)</s></li>"
+      "<li><s>$(task.content)</s><a href=" * Genie.Router.link_to(:update_task) * "?task_id=" * string(get(task.id)) * "&task_done=false" * ">&nbsp未完了に戻す</a></li>"
       else
-      "<li>$(task.content)</li>"
+      "<li>$(task.content)<a href=" * Genie.Router.link_to(:update_task) * "?task_id=" * string(get(task.id)) * "&task_done=true" * ">&nbsp完了</a></li>"
       end
     end
   end
